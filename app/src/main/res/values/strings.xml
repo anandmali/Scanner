@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Scanner</string>
+
+    <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
+    <string name="txt_aadhaar_scan_note">Scan Aadhaar QR Code</string>
+    <string name="ok">OK</string>
+    <string name="no_camera_permission">Requesting for camera permission</string>
+    <string name="Scanner">Scan here</string>
+
+</resources>

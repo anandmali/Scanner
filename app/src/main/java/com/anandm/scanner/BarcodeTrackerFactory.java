@@ -12,7 +12,7 @@ import javax.inject.Inject;
  * Factory for creating a tracker and associated graphic to be associated with a new barcode.  The
  * multi-processor uses this factory to create barcode trackers as needed -- one for each barcode.
  */
-class BarcodeTrackerFactory implements MultiProcessor.Factory<Barcode> {
+public class BarcodeTrackerFactory implements MultiProcessor.Factory<Barcode> {
 
     @Inject
     Context context;

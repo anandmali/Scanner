@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -16,7 +15,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -27,8 +25,10 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
+import dagger.android.support.DaggerAppCompatActivity;
+
 public class BarcodeCaptureActivity
-        extends AppCompatActivity
+        extends DaggerAppCompatActivity
         implements BarcodeGraphicTracker.BarcodeUpdateListener, View.OnClickListener,
         ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -90,7 +90,7 @@ public class BarcodeCaptureActivity
         // graphics for each barcode on screen.  The factory is used by the multi-processor to
         // create a separate tracker instance for each barcode.
         BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(getApplicationContext()).build();
-        BarcodeTrackerFactory barcodeFactory = new BarcodeTrackerFactory(this);
+        BarcodeTrackerFactory barcodeFactory = new BarcodeTrackerFactory();
         barcodeDetector.setProcessor(new MultiProcessor.Builder<>(barcodeFactory).build());
 
         if (!barcodeDetector.isOperational()) {

@@ -69,8 +69,7 @@ public class ScannerModule {
                 .setFacing(CameraSourceQr.CAMERA_FACING_BACK)
                 .setRequestedPreviewSize(1600, 1024)
                 .setRequestedFps(15.0f)
-                .setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)
-                .setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+                .setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
         return builder.build();
     }
 }

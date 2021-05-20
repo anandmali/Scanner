@@ -75,17 +75,6 @@ public class CameraSourceQr {
     private @interface FocusMode {
     }
 
-    @StringDef({
-            Camera.Parameters.FLASH_MODE_ON,
-            Camera.Parameters.FLASH_MODE_OFF,
-            Camera.Parameters.FLASH_MODE_AUTO,
-            Camera.Parameters.FLASH_MODE_RED_EYE,
-            Camera.Parameters.FLASH_MODE_TORCH
-    })
-    @Retention(RetentionPolicy.SOURCE)
-    private @interface FlashMode {
-    }
-
     private Context mContext;
 
     private final Object mCameraLock = new Object();
@@ -167,11 +156,6 @@ public class CameraSourceQr {
 
         public Builder setFocusMode(@FocusMode String mode) {
             mCameraSource.mFocusMode = mode;
-            return this;
-        }
-
-        public Builder setFlashMode(@FlashMode String mode) {
-            mCameraSource.mFlashMode = mode;
             return this;
         }
 
@@ -297,28 +281,6 @@ public class CameraSourceQr {
                 mCamera.release();
                 mCamera = null;
             }
-        }
-    }
-
-    /**
-     * Sets the flash mode.
-     *
-     * @param mode flash mode.
-     * @return {@code true} if the flash mode is set, {@code false} otherwise
-     */
-    public boolean setFlashMode(@FlashMode String mode) {
-        synchronized (mCameraLock) {
-            if (mCamera != null && mode != null) {
-                Camera.Parameters parameters = mCamera.getParameters();
-                if (parameters != null && parameters.getSupportedFlashModes().contains(mode)) {
-                    parameters.setFlashMode(mode);
-                    mCamera.setParameters(parameters);
-                    mFlashMode = mode;
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 
@@ -808,5 +770,4 @@ public class CameraSourceQr {
             }
         }
     }
-
 }

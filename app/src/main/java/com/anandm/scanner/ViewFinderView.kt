@@ -11,11 +11,10 @@ import androidx.annotation.Px
 internal class ViewFinderView(private val context: Context) : View(
     context
 ) {
-    private val mMaskPaint: Paint
+    private val mMaskPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val mFramePaint: Paint
     private val mPath: Path
-    var frameRect: Rect? = null
-        private set
+    private var frameRect: Rect? = null
     private var mFrameRatioWidth = 1f
     private var mFrameRatioHeight = 1f
     private val mFrameSize = 0.85f
@@ -91,8 +90,8 @@ internal class ViewFinderView(private val context: Context) : View(
     }
 
     fun setFrameAspectRatio(
-        @FloatRange(from = 0, fromInclusive = false) ratioWidth: Float,
-        @FloatRange(from = 0, fromInclusive = false) ratioHeight: Float
+        @FloatRange(from = 0.0, fromInclusive = false) ratioWidth: Float,
+        @FloatRange(from = 0.0, fromInclusive = false) ratioHeight: Float
     ) {
         mFrameRatioWidth = ratioWidth
         mFrameRatioHeight = ratioHeight
@@ -135,7 +134,6 @@ internal class ViewFinderView(private val context: Context) : View(
     }
 
     init {
-        mMaskPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mMaskPaint.style = Paint.Style.FILL
         mMaskPaint.color = resources.getColor(R.color.scanner_fill_color)
         mFramePaint = Paint(Paint.ANTI_ALIAS_FLAG)

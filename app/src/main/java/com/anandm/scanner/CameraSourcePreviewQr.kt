@@ -9,15 +9,17 @@ import android.view.SurfaceView
 import android.view.ViewGroup
 import androidx.annotation.RequiresPermission
 import java.io.IOException
+import kotlin.math.roundToInt
 
 class CameraSourcePreviewQr(private val mContext: Context, attrs: AttributeSet?) : ViewGroup(
     mContext, attrs
 ) {
-    private val mSurfaceView: SurfaceView
+    private val mSurfaceView: SurfaceView = SurfaceView(mContext)
     private var mStartRequested = false
     private var mSurfaceAvailable = false
     private var mCameraSourceQr: CameraSourceQr? = null
     private var mViewFinderView: ViewFinderView? = null
+
     @RequiresPermission(Manifest.permission.CAMERA)
     @Throws(IOException::class, SecurityException::class)
     fun start(cameraSource: CameraSourceQr?) {
@@ -92,7 +94,7 @@ class CameraSourcePreviewQr(private val mContext: Context, attrs: AttributeSet?)
                 DEFAULT_FRAME_ASPECT_RATIO_HEIGHT
             ).toFloat()
         )
-        mViewFinderView!!.setFrameThickness(Math.round(DEFAULT_FRAME_THICKNESS_DP * density))
+        mViewFinderView!!.setFrameThickness((DEFAULT_FRAME_THICKNESS_DP * density).roundToInt())
         addView(mSurfaceView)
         addView(mViewFinderView)
     }
@@ -104,7 +106,7 @@ class CameraSourcePreviewQr(private val mContext: Context, attrs: AttributeSet?)
 
     private fun getInDp(value: Float): Int {
         val density = mContext.resources.displayMetrics.density
-        return Math.round(density * value)
+        return (density * value).roundToInt()
     }
 
     companion object {
@@ -115,7 +117,6 @@ class CameraSourcePreviewQr(private val mContext: Context, attrs: AttributeSet?)
     }
 
     init {
-        mSurfaceView = SurfaceView(mContext)
         mSurfaceView.holder.addCallback(SurfaceCallback())
         initialize(mContext)
     }

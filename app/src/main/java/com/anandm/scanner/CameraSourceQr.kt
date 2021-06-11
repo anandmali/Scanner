@@ -476,7 +476,7 @@ private constructor() {
         private val mStartTimeMillis = SystemClock.elapsedRealtime()
 
         // This lock guards all of the member variables below.
-        private val mLock = Any()
+        private val mLock = Object()
         private var mActive = true
 
         // These pending variables hold the state associated with the new frame awaiting processing.

@@ -25,7 +25,7 @@ class BarcodeCaptureActivity : DaggerAppCompatActivity(), BarcodeUpdateListener,
     @Inject
     var mCameraSource: CameraSourceQr? = null
     private var mPreview: CameraSourcePreviewQr? = null
-    private var mImgClose: ImageView? = null
+    private lateinit var mImgClose: ImageView;
     public override fun onCreate(icicle: Bundle?) {
         super.onCreate(icicle)
         setContentView(R.layout.barcode_capture)
@@ -150,7 +150,7 @@ class BarcodeCaptureActivity : DaggerAppCompatActivity(), BarcodeUpdateListener,
         }
     }
 
-    override fun onBarcodeDetected(barcode: Barcode) {
+    override fun onBarcodeDetected(barcode: Barcode?) {
         if (barcode != null) {
             Log.d(TAG, barcode.rawValue)
         }

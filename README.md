@@ -1,3 +1,5 @@
 # Scanner
 
-`This project proof-of-concept code implementation of google vision API for barcode scanner with some custom scanner UI and animations. Built on top of google mobile vision sample code.`
+A barcode scanner application built using the Google Mobile Vision API, featuring a custom scanning
+UI, smooth animations, and enhanced user interaction. Built on top of Google’s Mobile Vision sample
+code.

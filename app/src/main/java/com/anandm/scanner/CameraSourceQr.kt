@@ -471,7 +471,7 @@ private constructor() {
      * associated processing are done for the previous frame, detection on the mostly recently
      * received frame will immediately start on the same thread.
      */
-    private inner class FrameProcessingRunnable internal constructor(private var mDetector: Detector<*>?) :
+    private inner class FrameProcessingRunnable(private var mDetector: Detector<*>?) :
         Runnable {
         private val mStartTimeMillis = SystemClock.elapsedRealtime()
 

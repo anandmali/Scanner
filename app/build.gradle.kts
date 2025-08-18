@@ -52,15 +52,4 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.play.services.vision)
 
-    // Dagger Core
-    implementation(libs.dagger.core)
-    kapt(libs.dagger.compiler)
-
-    // Dagger Android Support
-    implementation(libs.dagger.android)
-    implementation(libs.dagger.android.support)
-    kapt(libs.dagger.android.processor)
-
-    // Kotlin Stdlib
-    implementation(libs.kotlin.stdlib.jdk7)
 }
